@@ -59,9 +59,8 @@ COPY ./settings.py /app/Marg/Marg/settings.py
 
 WORKDIR /app/Marg
 
-# Collect static files (optional)
-RUN python manage.py collectstatic --noinput || true
+COPY ./entrypoint.sh /
+ENTRYPOINT ["sh" , "/entrypoint.sh"]
 
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
-
+# Expose the port the app runs on
 EXPOSE 8000

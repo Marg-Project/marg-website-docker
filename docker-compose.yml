@@ -9,12 +9,20 @@ services:
       - "8000:8000"
     expose:
       - 8000
+    volumes:
+      - static:/app/staticfiles
 
-  # nginx:
-  #   build:
-  #     context: ./nginx
-  #   container_name: nginx_proxy
-  #   ports:
-  #     - "80:80"
-  #   depends_on:
-  #     - django
+  nginx:
+    build:
+      context: ./nginx
+    container_name: nginx_proxy
+    ports:
+      - "80:80"
+    depends_on:
+      - django
+    volumes:
+      - static:/static:ro
+
+
+volumes:
+  static:
