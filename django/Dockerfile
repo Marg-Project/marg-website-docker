@@ -60,8 +60,9 @@ COPY ./settings.py /app/Marg/Marg/settings.py
 WORKDIR /app/Marg
 
 # Collect static files (optional)
-RUN python manage.py collectstatic --noinput || true
+RUN python manage.py collectstatic
 
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+# CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "Marg.wsgi:application"]
 
 EXPOSE 8000
