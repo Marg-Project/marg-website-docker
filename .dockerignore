@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-.env*
-=======
 .gitignore
->>>>>>> a102da8dddeb249c7a8c3d0f389eb1a29252e9e4
+.env
+.env.local
+.env.prod
