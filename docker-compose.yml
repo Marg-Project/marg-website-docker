@@ -10,7 +10,7 @@ services:
     expose:
       - 8000
     volumes:
-      - static:/app/staticfiles
+      - static:/app/Marg/staticfiles
 
   nginx:
     build:
@@ -21,7 +21,7 @@ services:
     depends_on:
       - django
     volumes:
-      - static:/static:ro
+      - static:/usr/share/nginx/html/static
 
 
 volumes:
